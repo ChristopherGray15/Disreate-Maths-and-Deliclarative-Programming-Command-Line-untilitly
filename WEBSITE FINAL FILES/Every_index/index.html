@@ -1,0 +1,203 @@
+
+
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <title>SHOE.COM</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css_file2.css">
+
+
+    <style>
+        /* The Dropdown Button */
+        .dropbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+        }
+
+        /* The container <div> - needed to position the dropdown content */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Dropdown Content (Hidden by Default) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        /* Links inside the dropdown */
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {background-color: #ddd;}
+
+        /* Show the dropdown menu on hover */
+        .dropdown:hover .dropdown-content {display: block;}
+
+        /* This is to Change the background color of the dropdown button when the dropdown content is shown */
+        .dropdown:hover .dropbtn {background-color: #3e8e41;}
+    </style>
+</head>
+
+
+<body>
+<div class="container-fluid">
+    <nav>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="index.php">HOME</a></li>
+            <li><a href="#">IN STOCK</a></li>
+            <li><a href="#">BEST SELLING</a></li>
+            <li><a href="#">SALE</a></li>
+        </ul>
+    </nav>
+
+    <h2>Add Item</h2>
+    <div class="row addItem">
+            <form action="processAddItem.php" method="post" enctype="multipart/form-data">
+                <section class="col-sm6 col-md4 col-lg-2">
+                <p>
+                    <label for="title">
+                        <span>Male_Female: </span>
+                        <strong><abbr title="required">*</abbr></strong>
+                    </label>
+                    <input type="text" id="male_female" name="male_female">
+                </p>
+
+                <p>
+                    <label for="title">
+                        <span>Size: </span>
+                        <strong><abbr title="required">*</abbr></strong>
+                    </label>
+                    <input type="text" id="size" name="size">
+                </p>
+
+                <p>
+                    <label for="title">
+                        <span>Colour: </span>
+                        <strong><abbr title="required">*</abbr></strong>
+                    </label>
+                    <input type="text" id="colour" name="colour">
+
+                    <label for="Brand">
+                        <span>Brand: </span>
+                        <strong><abbr title="required">*</abbr></strong>
+                    </label>
+                    <input type="text" id="brand" name="brand">
+
+                    <label for="image">
+                        <span>Image: </span>
+                        <strong><abbr title="required">*</abbr></strong>
+                    </label>
+                    <input type="file" id="image" name="image">
+
+                    <input type="submit" name="submit" value="upload">
+                </p>
+
+            </form>
+        </section>
+    </div><!-- row -->
+
+    <?php
+// This defines variables and set to empty values
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $CustomerID = test_input($_POST["CustomerID"]);
+  $Cust_name= test_input($_POST["Cust_name"]);
+  $Address Line 1 = test_input($_POST["Address Line 1"]);
+  $Town = test_input($_POST["Town"]);
+  $Country = test_input($_POST["country"]);
+  $Tel = test_input($_POST["Tel"]);
+  
+}
+
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+?>
+
+    <h2>PHP Form S17117107</h2>
+    <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
+        CustomerID: <input type="text" First name="CustomerID">
+        <br><br>
+        Cust_name: <input type="text" name="Cust_Name">
+        <br><br>
+        Address Line 1: <input type="text" name="Address Line 1">
+        <br><br>
+        Town: <textarea name="Town" rows="5" cols="40"></textarea>
+        <br><br>
+        Tel: <textarea name="Tel" rows="5" cols="40"></textarea>
+        <br><br>
+        Country:
+        <br><br>
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+            <div id="myDropdown" class="dropdown-content">
+                <a href="#">Birmingham</a>
+                <a href="#">London</a>
+                <a href="#">Manchester</a>
+                <a href="#">Bristol</a>
+                <a href="#">Swindow</a>
+                <a href="#">Kent</a>
+                <a href="#">Coventry</a>
+            </div>
+        </div>
+        <input type="submit" name="submit" value="Submit">
+    </form>
+
+
+    <!--<div class="container">-->
+        <!--<div class="row">-->
+
+            <!--<?php-->
+              <!--$result=$mysql->query("SELECT * FROM shoe") or die($mysql->error);-->
+            <!--//Loop and display all the shoes from the shoe table-->
+            <!--while($row = $result->fetch_assoc()):-->
+
+            <!--$id = $row['Shoe_id'];-->
+            <!--$imageName = $row['Image'];-->
+
+            <!--?>-->
+
+            <!--<div class="col-md-4">-->
+                <!--<div>-->
+                    <!--&lt;!&ndash; For every row create the image shoe &ndash;&gt;-->
+                    <!--<div>-->
+                        <!--<a><img  class="icon" src="images/<?=$imageName?>" alt='none' style="width:100%"></a>-->
+                    <!--</div>-->
+                    <!--<p>-->
+
+
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <!--<?php-->
+              <!--//CLOSE LOOP-->
+              <!--endwhile; ?>-->
+    <!--</div>-->
+</div>
+
+</body>
+</html>

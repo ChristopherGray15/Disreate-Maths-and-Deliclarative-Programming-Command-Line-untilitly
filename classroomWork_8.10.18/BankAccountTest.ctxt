@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=BankAccountTest
+comment1.params=
+comment1.target=void\ testGetBalance()
+comment2.params=
+comment2.target=void\ testGetAccountNumber()
+comment3.params=
+comment3.target=void\ testGetAccountHolder()
+comment4.params=
+comment4.target=void\ testGetKind()
+comment5.params=
+comment5.target=void\ testSetBalance()
+comment6.params=
+comment6.target=void\ testSetAccountNumber()
+comment7.params=
+comment7.target=void\ testSetAccountHolder()
+numComments=8

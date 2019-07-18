@@ -1,0 +1,9 @@
+week3_second lecture
+
+ Name three partitions types and briefly describe what they are used for. 
+
+d delete a partition
+
+L list all known partition types
+
+V verify the partition table.

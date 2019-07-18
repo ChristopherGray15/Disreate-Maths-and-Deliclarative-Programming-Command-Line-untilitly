@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<head>
+  <title>S17117107</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<?php 
+
+//Import database from process.php
+    require_once 'process.php'; ?>
+
+<body>
+    <nav class="navbar">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">SHOES.COM</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">HOME</a></li>
+            <li><a href="#">IN STOCK</a></li>
+            <li><a href="#">BEST SELLING</a></li>
+            <li><a href="#">SALE</a></li>
+          </ul>
+        </div>
+      </nav>
+
+<div class="container">
+
+        <h2>Many_Shoes.com</h2>
+        <div class="row services">
+          <section class="col-sm-6 col-md-4 col-lg-2">
+            <img class="icon" src="images/addidas_1.jpg" alt="Icon">
+            <h3></h3>
+            <p></p>
+          </section>
+         
+          <section class="col-sm-6 col-md-4 col-lg-2">
+            <img class="icon" src="images/Gina_1.jpg" alt="Icon">
+            <h3></h3>
+            <p></p>
+          </section>
+      
+          <section class="col-sm-6 col-md-4 col-lg-2">
+            <img class="icon" src="images/addidas_2.jpg" alt="Icon">
+            <h3></h3>
+          </section>
+         
+          <section class="col-sm-6 col-md-4 col-lg-2">
+            <img class="icon" src="images/New_balance2.jpg" alt="Icon">
+            <h3></h3>
+            <p></p>
+          </section>
+          
+          <section class="col-sm-6 col-md-4 col-lg-2">
+            <img class="icon" src="images/clarks_1.jpg" alt="Icon">
+            <h3></h3>
+            <p></p>
+          </section>
+          
+        </div><!-- row -->   
+      </div><!-- content container -->     
+      
+<div class="container">
+        <div class="row">
+       
+          <?php 
+              $result=$mysqli->query("SELECT * FROM movie_table") or die($mysqli->error);
+              //Loop and display the movie elements from the database
+              while($row = $result->fetch_assoc()):
+       
+                $id = $row['id']; 
+                $imageName = $row['image'];
+          ?>
+       
+              <div class="col-md-4">
+                <div class="thumbnail">
+                  <!-- For every row create the movie element from database and buttons -->
+                  <div class="test">
+                  <a href="movieInfo.php?movieID=<?php echo $id; ?>"><img  class="icon imgDesign" src="img/<?=$imageName?>" alt='none' style="width:100%"></a>
+                  </div>
+                  <p>
+                  <div class="rentButton">
+                    <?php if ($adminLogged != 1):?>
+       
+                      <a href="rent.php?rentID=<?php echo $id; ?>" name="rent" class="btn btn-danger redButton" role="button" >Rent</a>
+                       
+                   <?php else: ?>
+       
+                      <a href="process.php?delete=<?php echo $id; ?>" name="delete" class="btn btn-danger redButton " role="button" >Delete</a>
+                      <a href="update.php?updateID=<?php echo $id; ?>" name="edit" class="btn btn-danger redButton " role="button" >Edit</a>
+                       
+                    <?php endif;?>
+       
+                   </div>
+                </div>
+              </div>
+       
+          <?php 
+              //CLOSE LOOP
+              endwhile; ?>
+        </div>
+      </div>
+</body>
+</html>
